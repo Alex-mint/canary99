@@ -1,0 +1,82 @@
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<img src="{% static 'apartments/images/amadores-small.jpg' %}" height="200px"  alt="...">
+<div class="container py-3">
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+		        <center><h3>{{ message }}</h3></center>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-lable="Close"></button>
+        </div>
+     {% endfor %}
+{% endif %}
+
+<section class="calendary"><!-- calendary -->
+
+<h4 class="section-title">{{ apartment.title }}</h4>
+
+<div class="row">
+
+		<div class="col-md-6 order-md-1">
+
+			<div class="box-element">
+
+        <form action="" method="POST">
+		    {% csrf_token %}
+		    <div class="form_error-note">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+            <p><label class="product-price" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+		        <div class="text-right">
+		        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		         <button class="btn btn-warning">{% trans 'Reservar' %}</button>
+		        </div>
+		        </div>
+        {% else %}
+		        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        		<button class="btn btn-warning ">{% trans 'Solo usuario registrado puede reservar' %}</button>
+				    </div>
+        {% endif %}
+        </form>
+
+
+			</div>
+		</div>
+    <div class="col-md-6 order-md-2">
+			<div class="">
+        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum</p>
+
+
+
+			</div>
+		</div>
+</div>
+
+
+
+			<div class="box-element-map">
+
+
+				<div id="calendar" class="container" style="padding: 20px;"></div>
+
+{% for reserva in reservas %}
+    {{reserva.check_in | date:"Y-m-d"}}
+    {{reserva.check_out | date:"Y-m-d"}}
+{% endfor %}
+			</div>
+
+
+
+   </section><!-- icon -->
+	</div>
+
+
+
+
+{% endblock %}

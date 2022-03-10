@@ -1,0 +1,70 @@
+
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<img src="{% static 'apartments/images/amadores-small.jpg' %}" alt="amadores">
+
+<section class="checkout"><!-- checkout -->
+<h4 class="section-title">Checkout</h4>
+<div class="container">
+
+<div class="row gx-5">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+					<form action="" method="POST">
+		{% csrf_token %}
+		<div class="form-error">{{ form.non_field_errors }}</div>
+
+{% for f in form %}
+<p><label class="" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
+<div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+		<hr>
+		{% if permit %}
+		<button class="btn btn-warning btn-block" type="submit">{% trans 'Reservar' %}</button>
+</form>
+		{% else %}
+</form>
+<button class="btn btn-warning btn-block">{% trans 'Reservar' %}</button><span class="product-price">{% trans 'Usted ya tiene una reserva con estatus "Nueva Reserva".' %}</span>
+			{% endif %}
+			</div>
+		</div>
+
+		<div class="col-lg-6">
+
+				<div class="row">
+
+
+					<div class="col-md-8">
+						<ul class="list-unstyled">
+							<li>{% trans 'Noches' %}:</li>
+							<li>{% trans 'Entrada' %}:</li>
+							<li>{% trans 'Salida' %}:</li>
+							<li>{% trans 'Por noche' %}:</li>
+							<li>{% trans 'Limpieza' %}:</li>
+							<li>{% trans 'Precio total' %}:</li>
+						</ul>
+					</div>
+
+					<div class="col-md-4">
+						<ul class="list-unstyled">
+							<li>{{ reserva.amount_nights }}</li>
+							<li>{{ reserva.check_in|date:"d-m-Y" }}</li>
+							<li>{{ reserva.check_out|date:"d-m-Y" }}</li>
+							<li>{{ reserva.price_per_night }} €</li>
+							<li>{{ reserva.cleaning_price }} €</li>
+							<li>{{ reserva.final_price }} €</li>
+						</ul>
+					</div>
+
+				</div>
+
+		</div>
+	</div>
+</div>
+<div class="empty"></div>
+</section>>
+
+{% endblock%}

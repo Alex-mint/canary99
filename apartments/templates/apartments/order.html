@@ -1,0 +1,43 @@
+{% extends 'apartments/base.html' %}
+
+{% block content %}
+
+{% include 'apartments/inc/slidebar.html' %}
+
+<h1 class="section-title">Su Reserva</h1>
+<div class="container">
+
+<div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+         <span class="product-price"><small>{{ booking.reserva.apartment.condition }}</small></span>
+			</div>
+
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+
+				<h3>Apartmento "{{ booking.reserva.apartment.title }}"</h3>
+				<hr>
+
+				<div class="cart-row">
+						<ul class="list-unsty">
+								<li><span class="product-price"><small>  Noches:</small>{{ booking.reserva.amount_nights }}</span></li>
+								<li><span class="product-price"><small>  Entrada:</small>{{ booking.reserva.check_in|date:"d-m-Y" }}</span></li>
+								<li><span class="product-price"><small>  Salida:</small>{{ booking.reserva.check_out|date:"d-m-Y" }}</span></li>
+								<li><span class="product-price"><small>  Por noche:</small>{{ booking.reserva.price_per_night }} €</span></li>
+								<li><span class="product-price"><small>  Limpieza:</small>{{ booking.reserva.cleaning_price }} €</span></li>
+						</ul>
+						<hr>
+						<ul class="list-unsty">
+								<li><span class="product-price"><small>  Precio total</small>{{ booking.reserva.final_price }} €</span></li>
+						</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="empty"></div>
+{% endblock %}

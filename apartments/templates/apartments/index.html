@@ -1,0 +1,251 @@
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<img src="{% static 'apartments/images/amadores.jpg' %}" height="400px"  alt="...">
+
+	<div class="container"><!-- box-card -->
+      <div class="box-card">
+		      <p>TAURO</p>
+		      <h1>{{ apartment.title }}</h1>
+		      <img src="{% static 'apartments/images/star.png' %}" width="20px" alt="star">
+		      <img src="{% static 'apartments/images/star.png' %}" width="20px" alt="star">
+		      <img src="{% static 'apartments/images/star.png' %}" width="20px" alt="star">
+		      <img src="{% static 'apartments/images/star.png' %}" width="20px" alt="star">
+		      <img src="{% static 'apartments/images/star.png' %}" width="20px" alt="star">
+		      <br>
+		      <img src="{% static 'apartments/images/icon.png' %}" width="30px" alt="star">
+          <p>{% trans 'Gran Canaria, Mogan, España' %}</p>
+      </div>
+	</div><!-- box-card -->
+
+	<section class="services"><!-- icon -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item">
+						<p class="text-center"><i class="fas fa-vector-square"></i></p>
+						<p class="icon-title">{% trans 'METROS CUADRADOS' %}</p>
+						<h3>{{ apartment.square_meters }}</h3>
+
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item">
+						<p class="text-center"><i class="fas fa-users"></i></p>
+						<p>{% trans 'MÁXIMO DE INVITADOS' %}</p>
+						<h3>{{ apartment.max_person }}</h3>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item">
+						<p class="text-center"><i class="fas fa-bed"></i></p>
+						<p>{% trans 'DORMITORIOS' %}</p>
+						<h3>{{ apartment.rooms }}</h3>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item">
+						<p class="text-center"><i class="fas fa-bath"></i></p>
+						<p>{% trans 'BAÑOS' %}</p>
+						<h3>{{ apartment.toilet }}</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- icon -->
+
+    <div class="container">
+				<div class="d-grid gap-2 col-6 mx-auto">
+            <a  class="btn btn-warning btn-icon" href="{{ apartment.get_absolute_url }}"><span class="icon"><i class="fas fa-calendar text-dark mr-1" style="padding: 7px 6px;"></i></span>{% trans 'Ver disponibilidad' %}</a>
+            <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+		</div>
+
+	<section class="description"><!-- description -->
+		<div class="container">
+				<h5>{{ apartment.description_short }}</h5>
+				<p>{{ apartment.description_long }}</p>
+		</div>
+	</section><!-- description -->
+
+
+	<section class="carusel"><!-- carusel -->
+		<div class="container carusel">
+
+        {% include 'apartments/inc/slidebar.html' %}
+
+		</div>
+	</section><!-- carusel -->
+
+
+
+		<div class="container">
+				<div class="d-grid gap-2 col-6 mx-auto">
+            <a  class="btn btn-warning btn-icon" href="{{ apartment.get_absolute_url }}"><span class="icon"><i class="fas fa-calendar text-dark mr-1" style="padding: 7px 6px;"></i></span>{% trans 'Ver disponibilidad' %}</a>
+            <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+		</div>
+
+
+   <section class="map"><!-- map -->
+		<div class="container map">
+
+        {{map|safe}}
+
+		</div>
+	</section><!-- map -->
+
+
+	<section class="details"><!-- details -->
+		<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h4>{% trans 'Precios' %}</h4>
+
+					</div>
+
+					<div class="col-md-8">
+							<div class="row">
+									<div class="col">
+										<ul class="list-unstyled">
+											<li>{% trans 'Por noche' %}</li>
+											<li>{% trans 'Tarifa de limpieza' %}</li>
+										</ul>
+									</div>
+
+									<div class="col">
+										<ul class="list-unstyled">
+											<li>{{ apartment.price.day_price }}€</li>
+											<li>{{ apartment.cleaning_price }}€</li>
+										</ul>
+									</div>
+							</div>
+					</div>
+
+				</div>
+
+				<hr class="hr-details">
+
+				<div class="row">
+					<div class="col-md-4">
+						<h4>{% trans 'Comodidades' %}</h4>
+
+					</div>
+
+					<div class="col-md-4">
+						<ul class="list-unstyled">
+							<li>WIFI</li>
+							<li>{% trans 'SECADOR DE PELO' %}</li>
+							<li>{% trans 'JACUZZI PRIVADO' %}</li>
+						</ul>
+					</div>
+
+					<div class="col-md-4">
+						<ul class="list-unstyled">
+							<li>{% trans 'MAQUINA DE CAFE' %}</li>
+							<li>{% trans 'TELEVISÓR LED' %} 55</li>
+							<li>{% trans 'PISCINA' %}</li>
+						</ul>
+					</div>
+
+				</div>
+
+				<hr class="hr-details">
+
+				<div class="row">
+					<div class="col-md-4">
+						<h4>{% trans 'Detalles de la propiedad' %}</h4>
+
+					</div>
+
+					<div class="col-md-8">
+							<div class="row">
+									<div class="col">
+										<ul class="list-unstyled">
+											<li>{% trans 'Superficie' %}:</li>
+											<li>{% trans 'Dormitorios' %}:</li>
+											<li>{% trans 'Baños' %}:</li>
+											<li>{% trans 'Entrada' %}</li>
+											<li>{% trans 'Salida' %}</li>
+										</ul>
+									</div>
+
+									<div class="col">
+										<ul class="list-unstyled">
+											<li>{{ apartment.square_meters }} m²</li>
+											<li>{{ apartment.rooms }}</li>
+											<li>{{ apartment.toilet }}</li>
+											<li>16:00</li>
+											<li>11:00</li>
+										</ul>
+									</div>
+
+							</div>
+					</div>
+				</div>
+
+				<hr class="hr-details">
+
+				<div class="row">
+					<div class="col-md-4">
+						<h4>{% trans 'Condiciones' %}</h4>
+
+					</div>
+
+					<div class="col-md-8">
+							<div class="row">
+									<div class="col">
+						<ul class="list-unstyled">
+							<li>{% trans 'Estancia mínima' %}:</li>
+							<li>{% trans 'Máximo huéspedes' %}:</li>
+							<li>{% trans 'Fiestas' %}:</li>
+							<li>{% trans 'Mascotas' %}:</li>
+							<li>{% trans 'Fumar' %}:</li>
+						</ul>
+					</div>
+
+					<div class="col">
+						<ul class="list-unstyled">
+							<li>{{ apartment.min_days }} {% trans 'días' %}</li>
+							<li>{{ apartment.max_person }}</li>
+							<li>{% trans 'No' %}</li>
+							<li>{% trans 'No' %}</li>
+							<li>{% trans 'No' %}</li>
+						</ul>
+					</div>
+
+				</div>
+				</div>
+				</div>
+
+			</div>
+
+	</section><!-- details -->
+
+    <div class="container">
+				<div class="d-grid gap-2 col-6 mx-auto">
+            <a  class="btn btn-warning btn-icon" href="{{ apartment.get_absolute_url }}"><span class="icon"><i class="fas fa-calendar text-dark mr-1" style="padding: 7px 6px;"></i></span>{% trans 'Ver disponibilidad' %}</a>
+            <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+		</div>
+
+   <section class="video"><!-- map -->
+		<div class="container video">
+				<div class="video-container">
+
+						<iframe src="https://www.youtube.com/embed/{{ apartment.video_code }}" height="315" width="560" allowfullscreen="" frameborder="0"></iframe>
+
+		    </div>
+		</div>
+	</section><!-- map -->
+
+{% endblock%}
+

@@ -1,0 +1,28 @@
+
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<img src="{% static 'apartments/images/amadores-small.jpg' %}" height="200px"  alt="...">
+
+<div class="container"><!-- box-logo -->
+      <div class="box-logo">
+		      <h1>Login</h1>
+		        <form method="post">
+               {% csrf_token %}
+								<div class="form-error">{{ form.non_field_errors }}</div>
+								  {% for f in form %}
+								    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
+								    <div class="form-error">{{ f.errors }}</div>
+								  {% endfor %}
+				        <hr>
+						    <button class="btn btn-primary btn-block" type="submit">{% trans 'Acceder' %}</button>
+						</form>
+      </div>
+	</div><!-- box-logo -->
+
+
+
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<img src="{% static 'apartments/images/amadores-small.jpg' %}" height="200px"  alt="...">
+
+<div class="container"><!-- box-logo -->
+      <div class="box-logo">
+		      <h1>{% trans 'Registrarme' %}</h1>
+						<form method="post">
+						    {% csrf_token %}
+										{% for f in form %}
+										  <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
+										  <div class="form-error">{{ f.errors }}</div>
+										{% endfor %}
+						    <button class="btn btn-primary btn-block" type="submit">{% trans 'Registrarme' %}</button>
+						</form>
+		</div>
+</div>
+
+{% endblock%}
+

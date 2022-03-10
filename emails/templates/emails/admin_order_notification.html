@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+</head>
+<body>
+Cliente: {{ booking.first_name }} {{ booking.last_name }}
+
+<ul class="list-unsty">
+								<li><span class="product-price"><small>  Reserva ref. : </small>{{ booking.id }}</span></li>
+								<li><span class="product-price"><small>  Telefono :</small>{{ booking.phone }}</span></li>
+								<li><span class="product-price"><small>  Apartamento: </small>{{ apartment }}</span></li>
+								<li><span class="product-price"><small>  Noches: </small>{{ reserva.amount_nights }}</span></li>
+								<li><span class="product-price"><small>  Entrada: </small>{{ reserva.check_in|date:"d-m-Y" }}</span></li>
+								<li><span class="product-price"><small>  Salida: </small>{{ reserva.check_out|date:"d-m-Y" }}</span></li>
+								<li><span class="product-price"><small>  Por noche: </small>{{ reserva.price_per_night }} €</span></li>
+								<li><span class="product-price"><small>  Limpieza: </small>{{ reserva.cleaning_price }} €</span></li>
+								<li><span class="product-price"><small>  Precio final: </small>{{ reserva.final_price }} €</span></li>
+								<li><span class="product-price"><small>  Mensaje: </small>{{ booking.comment }}</span></li>
+						</ul>
+</body>
+</html>

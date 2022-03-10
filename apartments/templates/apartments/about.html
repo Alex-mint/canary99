@@ -1,0 +1,11 @@
+{% extends 'apartments/base.html' %}
+
+{% block content %}
+<h1>Quen somos</h1>
+<div id="calendar" class="container" style="padding: 20px;"></div>
+
+{% for reserva in reservas %}
+    {{reserva.check_in | date:"Y-m-d"}}
+    {{reserva.check_out | date:"Y-m-d"}}
+{% endfor %}
+{% endblock %}
